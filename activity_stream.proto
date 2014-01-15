@@ -1,0 +1,61 @@
+///===================================================================
+/// Activity Streams in protobufs
+///===================================================================
+//
+// This is a transliteration of the Activity stream JSON format to
+// Protcol Buffers <http://activitystrea.ms/specs/json/1.0/>
+//
+package activity_streams;
+
+message Activity {
+  required Object actor = 1;
+  optional string content = 2;
+  optional Object generator = 3;
+  optional MediaLink icon = 4;
+  optional string id = 5;
+  optional Object object = 6;
+  required string published = 7;
+  optional Object provider = 8;
+  optional Object target = 9;
+  optional string title = 10;
+  optional string updated = 11;
+  optional string url = 12;
+  optional string verb = 13;
+
+  extensions 100 to 199;
+}
+
+message MediaLink {
+  optional uint32 duration = 1;
+  optional uint32 height = 2;
+  required string url = 3;
+  optional uint32 width = 4;
+
+  extensions 100 to 199;
+}
+
+message Object {
+  repeated Object attachments = 1;
+  optional Object author = 2;
+  optional string content = 3;
+  optional string displayName = 4;
+  repeated string downstreamDuplicates = 5;
+  optional string id = 6;
+  optional MediaLink image = 7;
+  optional string mediaType = 8;
+  optional string published = 9;
+  optional string summary = 10;
+  optional string updated = 11;
+  repeated string upstreamDuplicates = 12;
+  optional string url = 13;
+
+  extensions 100 to 199;
+}
+
+message Collection {
+  optional uint32 totalItems = 1;
+  repeated Activity items = 2;
+  optional string url = 3;
+
+  extensions 100 to 199;
+}
